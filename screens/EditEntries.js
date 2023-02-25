@@ -1,7 +1,7 @@
 import { deleteEntries, updateEntries } from "../firebase/firestore";
 import { colors } from "../helper";
 import { View, Text, Alert, StyleSheet } from 'react-native'
-import { React, useState, useEffect } from 'react'
+import { React} from 'react'
 import { IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
