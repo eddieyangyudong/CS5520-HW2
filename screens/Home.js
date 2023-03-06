@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, Pressable, Button, StyleSheet } from "react-native";
+import React, { useState} from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MyButton } from "../components/MyButton";
 import { colors, headerStyle } from "../helper";
-import EntriesList from "../components/EntriesList";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import AllEntries from "./AllEntries";
 import OverLimitEntrires from "./OverLimitEntrires";
@@ -11,8 +9,6 @@ import OverLimitEntrires from "./OverLimitEntrires";
 const Tab = createBottomTabNavigator();
 
 const Home = ({ navigation }) => {
-  const [calories, setCalories] = useState([]);
-
   const headerRight = () => (
     <MyButton onPress={() => 
       navigation.navigate("Add")} 

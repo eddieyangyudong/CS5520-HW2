@@ -1,10 +1,11 @@
 import { deleteEntries, updateEntries } from "../firebase/firestore";
 import { colors } from "../helper";
-import { View, Text, Alert, StyleSheet } from 'react-native'
-import { React, useState, useEffect } from 'react'
+import { View, Text, Alert, StyleSheet, Pressable } from 'react-native'
+import { React } from 'react'
 import { IconButton } from "@react-native-material/core";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { useNavigation } from "@react-navigation/native";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 const EditEntries = ({ route }) => {
   const navigation = useNavigation();
@@ -46,21 +47,39 @@ const EditEntries = ({ route }) => {
       <Text style={styles.text}>Description: {route.params.description}</Text>
       <View style={styles.buttonContainer}>
         <View style={styles.icon}>
-          <IconButton
+          <Pressable
+            onPress={onDelete}
+            android_ripple={{ color: colors.LIGHT_BLUE, foreground: true }}>
+            <MaterialCommunityIcons
+              name="delete-outline"
+              color={colors.WHITE}
+              size={40}
+            />
+          </Pressable>
+          {/* <IconButton
             icon={props => <Icon name="delete-outline" {...props}
               onPress={onDelete}
               size={30}
               color={colors.WHITE}
-            />} />
+            />} /> */}
         </View>
         {
           route.params.isOverLimit ?
             <View style={styles.icon}>
-              <IconButton
+              <Pressable
+                onPress={changeOverLimit}
+                android_ripple={{ color: colors.LIGHT_BLUE, foreground: true }}>
+                <MaterialCommunityIcons
+                  name="check"
+                  color={colors.WHITE}
+                  size={40}
+                />
+              </Pressable>
+              {/* <IconButton
                 icon={props => <Icon name="check" {...props}
                   onPress={changeOverLimit}
                   size={30}
-                  color={colors.WHITE} />} />
+                  color={colors.WHITE} />} /> */}
             </View> : <View></View>
         }
       </View>
@@ -97,7 +116,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.PURPLE,
     width: 70,
     alignItems: "center",
-    margin: 10
+    justifyContent: "center",
+    margin: 12,
+    height: 50
   }
 
 
